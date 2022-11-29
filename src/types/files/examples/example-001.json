@@ -1,0 +1,103 @@
+{
+  "name": "cliente",
+  "properties": {
+    "folder-path": "./cliente"
+   ,"struct-name": "Cliente"
+  }
+,"attributes": [
+  { "name": "oId", "type": "object-id", "tags": [ "json", "-", "bson", "_id" ], "queryable": true }
+,{ "name": "ndg"                   , "type": "string", "queryable": true }
+,{ "name": "codiceFiscale"         , "type": "string", "queryable": true }
+,{ "name": "partitaIVA"            , "type": "string", "queryable": true }
+,{ "name": "natura"                , "type": "string" }
+,{ "name": "specificitaGiuridica"  , "type": "string" }
+,{ "name": "tipo"                  , "type": "string" }
+,{ "name": "stato"                 , "type": "string" }
+,{ "name": "dataCensimento"        , "type": "string" }
+,{ "name": "dataEstinz"            , "type": "string" }
+,{ "name": "radicamento"           , "type": "struct", "struct-name": "Radicamento", "attributes": [
+    {"name": "banca"              , "type": "string"}
+  ,{"name": "filiale"            , "type": "string"}
+  ,{"name": "settore"            , "type": "string"}
+  ,{"name": "sottoSettore"	   , "type": "string"}
+  ]}
+,{ "name": "anagrafica"            , "type": "struct", "struct-name": "Anagrafica",   "attributes": [
+    {"name": "intestazioneRidotta", "type": "string"}
+  ,{"name": "nonAttivo"          , "type": "string"}
+  ,{"name": "nascitaCostituzione", "type": "struct", "struct-name": "NascitaCostituzione",  "attributes": [
+      { "name": "nazione"     , "type": "string"}
+    ,{ "name": "provincia"   , "type": "string"}
+    ,{ "name": "localita"    , "type": "string"}
+    ,{ "name": "data"        , "type": "string"}
+    ]}
+  ,{"name": "personaFisica"            , "type": "struct", "struct-name": "PersonaFisica", "attributes": [
+      { "name": "cognome"           , "type": "string"}
+    ,{ "name": "nome"              , "type": "string"}
+    ,{ "name": "nomeAlternativo"   , "type": "string"}
+    ,{ "name": "cognomeAcquisito"  , "type": "string"}
+    ,{ "name": "patronimico"       , "type": "string"}
+    ,{ "name": "sesso"             , "type": "string"}
+    ,{ "name": "statoCivile"       , "type": "string"}
+    ,{ "name": "titoloOnorifico"   , "type": "string"}
+    ,{ "name": "titoloAccademico"  , "type": "string"}
+    ,{ "name": "documentoIdentita" , "type": "struct",  "struct-name": "DocumentoIdentita", "attributes": [
+        { "name": "tipo"           , "type": "string"}
+      ,{ "name": "numero"         , "type": "string"}
+      ,{ "name": "dataRilascio"   , "type": "string"}
+      ,{ "name": "dataScadenza"   , "type": "string"}
+      ,{ "name": "enteRilascio"   , "type": "string"}
+      ]}
+    ]}
+  ,{"name": "personaGiuridica"   , "type": "struct", "struct-name": "PersonaGiuridica", "attributes": [
+      { "name": "ragioneSociale", "type": "string"}
+    ]}
+  ]}
+,{ "name": "indirizzoLegale", "type": "ref-struct", "struct-ref" : { "struct-name": "Indirizzo", "is-external": true, "package": "posteitaliane.it/anag-consumer/model/common" }}
+,{ "name": "indirizzoPostale", "type": "ref-struct", "struct-ref" : { "struct-name": "Indirizzo", "is-external": true, "package": "posteitaliane.it/anag-consumer/model/common" }}
+,{ "name": "bankit", "type": "struct", "struct-name": "BankIt", "attributes": [
+    { "name": "provincia1"      , "type": "string"}
+  ,{ "name": "provincia2"      , "type": "string"}
+  ,{ "name": "localita"        , "type": "string"}
+  ,{ "name": "cin"             , "type": "string"}
+  ]}
+,{ "name": "profilo", "type": "struct", "struct-name": "InfoProfilo", "attributes": [
+    { "name": "regimePatrimoniale"         , "type": "string"}
+  ,{ "name": "codiceUIC"                  , "type": "string"}
+  ,{ "name": "codiceMeccanograficoEstero" , "type": "string"}
+  ,{ "name": "acronimo"                   , "type": "string"}
+  ,{ "name": "codiceABI"                  , "type": "string"}
+  ,{ "name": "attivitaEconomica", "type": "struct", "struct-name": "AttivitaEconomica", "attributes": [
+      { "name": "nota"          , "type": "string"}
+    ,{ "name": "ciae"          , "type": "struct", "struct-name": "CodiceAttivitaEconomica", "attributes": [
+        { "name": "valore"              , "type": "string"}
+      ,{ "name": "valore_old"          , "type": "string"}
+      ]}
+    ,{ "name": "rae"          , "type": "ref-struct", "struct-name": "CodiceAttivitaEconomica"}
+    ,{ "name": "sae"          , "type": "ref-struct", "struct-name": "CodiceAttivitaEconomica"}
+    ,{ "name": "ateco"        , "type": "ref-struct", "struct-name": "CodiceAttivitaEconomica"}
+    ]}
+  ,{ "name": "iscrizioni", "type": "array", "item": { "type": "struct", "struct-name": "Iscrizione", "attributes": [
+      { "name": "tipo"                 , "type": "string"}
+    ,{ "name": "data"                 , "type": "string"}
+    ,{ "name": "provincia"            , "type": "string"}
+    ,{ "name": "numero"               , "type": "string"}
+    ]}}
+  ,{ "name": "regimeAV"                   , "type": "string"}
+  ,{ "name": "forzaturaRegimeAV"          , "type": "string"}
+  ,{ "name": "numeroDipendenti"           , "type": "string"}
+  ,{ "name": "fatturato"                  , "type": "string"}
+  ,{ "name": "centraleRischi", "type": "struct", "struct-name": "CentraleRischi", "attributes": [
+      { "name": "codice", "type": "string"}
+    ,{ "name": "data", "type": "string"}
+    ,{ "name": "cin", "type": "string"}
+    ,{ "name": "tipo", "type": "string"}
+    ]}
+  ]}
+,{ "name": "legati", "type": "map", "item": { "type": "ref-struct", "struct-ref" : { "struct-name": "RifLegame", "is-external": true, "package": "posteitaliane.it/anag-consumer/model/common" }}}
+,{ "name": "leganti", "type": "map", "item": { "type": "ref-struct", "struct-ref" : { "struct-name": "RifLegame", "is-external": true, "package": "posteitaliane.it/anag-consumer/model/common" }}}
+,{ "name": "infoTecniche", "type": "ref-struct", "struct-ref" : { "struct-name": "InfoTecniche", "is-external": true, "package": "posteitaliane.it/anag-consumer/model/common" }}
+,{ "name": "sysInfo", "type": "ref-struct", "struct-ref" : { "struct-name": "SysInfo", "is-external": true, "package": "posteitaliane.it/anag-consumer/model/common" }, "options": "cust-upd-handling"}
+,{ "name": "time", "type": "ref-struct", "struct-ref" : { "struct-name": "InfoTecniche", "is-external": true, "package": "posteitaliane.it/anag-consumer/model/common" }}
+]
+}
+

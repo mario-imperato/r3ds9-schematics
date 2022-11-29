@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# To execute change execution permissions....
+# chmod ugo+x ./cmd-types-g.sh
+#
+# To enable debug level info set env var NG_DEBUG.
+# NG_DEBUG=true ng generate ...
+#
+
+clear
+
+ng generate alx-schematics:types <%=argv_0%> \
+   --dm-def=<%=dmFileDefinition%>  \
+   --flat=<%=flat%>  \
+   --oc=<%=onConflict%>  \
+   "--oc-owr-exts=<%=onConflictOverwriteFileTypes%>" \
+   "--oc-bak-exts=<%=onConflictBakFileTypes%>" \
+   "--oc-new-exts=<%=onConflictNewFileTypes%>" \
+   "--oc-keep-exts=<%=onConflictKeepFileTypes%>" \
+   --gen-patch=<%=generatePatch%> \
+   "--no-patch-4=<%=noPatch4FileTypes%>" \
+   --deps=<%=dependencies%> \
+   --skip-exts="<%=skipFileTypes%>"
+

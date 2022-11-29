@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# To execute change execution permissions....
+# chmod ugo+x ./cmd-cc.sh
+#
+# remove files generated on clonflicts.
+rm -rf *.patch *.bak *.new
+

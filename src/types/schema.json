@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "TypesSchema",
+  "title": "Types Schema",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path to create the objects.",
+      "visible": false,
+      "$default": {
+        "$source": "workingDirectory"
+      }
+    },
+    "name": {
+      "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "dmFileDefinition": {
+      "type": "string",
+      "description": "The file with the data model definition.",
+      "default": "data-model-definition.json",
+      "x-prompt": "Please specify the data model definition file to use",
+      "alias": "dm-def"
+    },
+    "flat": {
+      "type": "boolean",
+      "description": "The types will not be written in subfolder.",
+      "default": true
+    },
+    "onConflict": {
+      "type": "string",
+      "description": "The policy to adopt when generated files will overwrite current ones. Possible options: BAK, OVERWRITE, KEEP.",
+      "default": "OVERWRITE",
+      "x-prompt": "Please specify the conflict resolution mode to adopt",
+      "enum": [
+        "KEEP",
+        "BAK",
+        "OVERWRITE",
+        "NEW"
+      ],
+      "alias": "oc"
+    },
+    "onConflictOverwriteFileTypes": {
+      "type": "string",
+      "description": "The list of extensions in the form of .<ext> that requires OVERWRITE as policy",
+      "alias": "oc-owr-exts",
+      "default": ".sh"
+    },
+    "onConflictBakFileTypes": {
+      "type": "string",
+      "description": "The list of extensions in the form of .<ext> that requires BAK as policy",
+      "alias": "oc-bak-exts"
+    },
+    "onConflictNewFileTypes": {
+      "type": "string",
+      "description": "The list of extensions in the form of .<ext> that requires NEW as policy",
+      "alias": "oc-new-exts"
+    },
+    "onConflictKeepFileTypes": {
+      "type": "string",
+      "description": "The list of extensions in the form of .<ext> that requires KEEP as policy",
+      "alias": "oc-keep-exts"
+    },
+    "generatePatch": {
+      "type": "boolean",
+      "description": "A patch file can be created in case of conflicts",
+      "default": true,
+      "x-prompt": "Please specify if a patch has to be created in case of conflict",
+      "alias": "gen-patch"
+    },
+    "noPatch4FileTypes": {
+      "type": "string",
+      "description": "The list of extensions in the form of .<ext> thaat do not create a patch file",
+      "default": ".sh",
+      "alias": "no-patch-4"
+    },
+    "dependencies": {
+      "type": "string",
+      "description": "The dependencies of the project inthe form <ambit>:<path>[#<context-name>]",
+      "default": "model:/src/app/shared/schematics",
+      "alias": "deps"
+    },
+    "skipFileTypes": {
+      "type": "string",
+      "description": "A list of extensions of files that will not be generated",
+      "alias": "skip-exts"
+    }
+  },
+  "required": ["name", "dmFileDefinition", "onConflict"]
+}

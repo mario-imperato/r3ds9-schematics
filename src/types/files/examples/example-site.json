@@ -1,0 +1,25 @@
+{
+  "name": "site",
+  "properties": {
+    "folder-path": "./cliente"
+   ,"struct-name": "Site"
+  }
+,"attributes": [
+ { "name": "siteid"       , "type": "string", "queryable": true }
+,{ "name": "domain"       , "type": "string" }
+,{ "name": "etype"        , "type": "string", "queryable": false }
+,{ "name": "name"         , "type": "string", "queryable": true }
+,{ "name": "description"  , "type": "string" }
+,{ "name": "languages"    , "type": "string" }
+,{ "name": "sysinfo"      , "type": "struct", "struct-name": "SysInfo", "attributes": [
+    {"name": "createdat"  , "type": "date"}
+   ,{"name": "modifiedat" , "type": "date"}
+   ]}
+,{ "name": "links", "type": "array", "item": { "type": "struct", "struct-name": "Links", "attributes": [
+    { "name": "href"      , "type": "string"}
+   ,{ "name": "name"      , "type": "string"}
+   ,{ "name": "linktype"  , "type": "string"}
+   ]}
+}
+]}
+

@@ -1,0 +1,14 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "r3ds9-schematics": {
+      "description": "r3ds9 schematic.",
+      "factory": "./r3ds9-schematics/index#r3ds9Schematics"
+    },
+    "types": {
+      "description": "A blank schematic.",
+      "factory": "./types/index#types",
+      "schema": "./types/schema.json"
+    }
+  }
+}
